@@ -15,9 +15,9 @@ public class PlayerDataSaveTask {
 	public void end() {
 		end = true;
 	}
-	
-	public void start(int minutes) {
-		long ticks = minutes*60*20;
+
+	public void start(int seconds) {
+		long ticks = seconds* 20L;
 		Scheduler.plugin(plugin).async().runTaskTimer(() -> {
 			if(end) {
 				return false;
