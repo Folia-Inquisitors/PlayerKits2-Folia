@@ -1,6 +1,7 @@
 package pk.ajneb97.model.verify;
 
 import org.bukkit.entity.Player;
+import pk.ajneb97.api.PlayerKitsAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,12 @@ public abstract class PKBaseError {
         this.file = file;
         this.errorText = errorText;
         this.critical = critical;
-        this.prefix = "&e⚠ ";;
-        if(this.critical){
-            this.prefix = "&c⚠ ";
+
+        boolean isPaper = PlayerKitsAPI.getPlugin().getDependencyManager().isPaper();
+        if(isPaper){
+            this.prefix = this.critical ? "<red>⚠ " : "<yellow>⚠ ";
+        }else{
+            this.prefix = this.critical ? "&c⚠ " : "&e⚠ ";
         }
     }
 
